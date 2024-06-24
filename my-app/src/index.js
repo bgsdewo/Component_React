@@ -34,7 +34,21 @@ function Menu() {
   );
 }
 function Footer() {
-  return <footer>{new Date().getFullYear()} Warteg Padang</footer>;
+  const hour = new Date().getHours();
+  const jamBuka = 10;
+  const jamTutup = 22;
+
+  if (hour < jamBuka || hour > jamTutup) {
+    alert("Warteg tutup");
+  } else {
+    alert("Warteg Buka");
+  }
+  return (
+    <footer>
+      {new Date().getFullYear()} Warteg Padang | jamBuka {jamBuka} - jamTutup
+      {jamTutup}
+    </footer>
+  );
 }
 function Food() {
   return (
