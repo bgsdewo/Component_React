@@ -1,10 +1,12 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
+//diluar component
+import "./index.css";
 
 //merupakan component utama
 function App() {
   return (
-    <div>
+    <div className="container">
       <Header />
       <Menu />
       <Footer />
@@ -13,16 +15,26 @@ function App() {
 }
 
 function Header() {
-  return <h1>Warteg Padang</h1>;
+  return (
+    <h1 style={{ color: "red", fontSize: "50px", textTransform: "uppercase" }}>
+      Warteg Padang
+    </h1>
+  );
 }
 function Menu() {
+  //internal style
+  const style = {
+    color: "orange",
+    fontSize: "50px",
+    textTransform: "uppercase",
+  };
   return (
-    <div>
-      <h2>Menu kita</h2>
+    <main className="menu">
+      <h2 style={style}>Menu kita</h2>
       <Food />
       <Food />
       <Food />
-    </div>
+    </main>
 
     //ini gabisa
     // <div>
@@ -44,7 +56,7 @@ function Footer() {
     alert("Warteg Buka");
   }
   return (
-    <footer>
+    <footer className="footer">
       {new Date().getFullYear()} Warteg Padang | jamBuka {jamBuka} - jamTutup
       {jamTutup}
     </footer>
