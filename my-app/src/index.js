@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-//diluar component
+import data from "./data";
 import "./index.css";
 
 //merupakan component utama
@@ -31,7 +31,12 @@ function Menu() {
   return (
     <main className="menu">
       <h2 style={style}>Menu kita</h2>
-      <Food
+      <ul className="foods">
+        {data.map((food) => (
+          <Food foodObj={food} key={food.nama} />
+        ))}
+      </ul>
+      {/* <Food
         nama="Nasi Goreng"
         deskripsi="Nasi goreng merupkan khas indonesia"
         harga={25000}
@@ -45,21 +50,26 @@ function Menu() {
         foto="food/sate-ayam.jpg"
         stok={Math.random() >= 0.5 ? true : false}
       />
-      <Food />
+      <Food /> */}
     </main>
   );
 }
 
 function Food(props) {
   return (
-    <div className="food">
-      <img src={props.foto} alt={props.nama} width={100} height={70} />
+    <li className="food">
+      <img
+        src={props.foodObj.foto}
+        alt={props.foodObj.nama}
+        width={100}
+        height={70}
+      />
       <div>
-        <h3>{props.nama}</h3>
-        <p>{props.deskripsi}</p>
-        <span>{props.harga}</span>
+        <h3>{props.foodObj.nama}</h3>
+        <p>{props.foodObj.deskripsi}</p>
+        <span>{props.foodObj.harga}</span>
       </div>
-    </div>
+    </li>
   );
 }
 
