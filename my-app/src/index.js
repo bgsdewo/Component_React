@@ -22,7 +22,8 @@ function Header() {
   );
 }
 function Menu() {
-  //internal style
+  const foods = data;
+  const numFoods = foods.length;
   const style = {
     color: "orange",
     fontSize: "50px",
@@ -31,11 +32,13 @@ function Menu() {
   return (
     <main className="menu">
       <h2 style={style}>Menu kita</h2>
-      <ul className="foods">
-        {data.map((food) => (
-          <Food foodObj={food} key={food.nama} />
-        ))}
-      </ul>
+      {numFoods > 0 && (
+        <ul className="foods">
+          {data.map((food) => (
+            <Food foodObj={food} key={food.nama} />
+          ))}
+        </ul>
+      )}
       {/* <Food
         nama="Nasi Goreng"
         deskripsi="Nasi goreng merupkan khas indonesia"
@@ -77,16 +80,18 @@ function Footer() {
   const hour = new Date().getHours();
   const jamBuka = 10;
   const jamTutup = 22;
-
-  if (hour < jamBuka || hour > jamTutup) {
-    alert("Warteg tutup");
-  } else {
-    alert("Warteg Buka");
-  }
+  const isOpen = hour >= jamBuka || hour > jamTutup;
   return (
     <footer className="footer">
-      {new Date().getFullYear()} Warteg Padang | jamBuka {jamBuka} - jamTutup
-      {jamTutup}
+      {isOpen && (
+        <div className="order">
+          <p>
+            {new Date().getFullYear()} Warung Padang | jam Buka {jamBuka} -
+            jamTutup {jamTutup}
+          </p>
+          <button className="btn">Order</button>
+        </div>
+      )}
     </footer>
   );
 }
