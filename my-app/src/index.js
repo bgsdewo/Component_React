@@ -71,26 +71,33 @@ function Footer() {
   const isOpen = hour >= jamBuka && hour < jamTutup;
 
   if (isOpen) {
-    return (
-      <footer className="footer">
-        <div className="order">
-          <p>
-            {new Date().getFullYear()} Warung Padang | Jam Buka {jamBuka} - Jam
-            Tutup {jamTutup}
-          </p>
-          <button className="btn">Order</button>
-        </div>
-      </footer>
-    );
+    return <FooterOpenHour jamBuka={jamBuka} jamTutup={jamTutup} />;
   } else {
-    return (
-      <footer className="footer">
-        <p>Maaf, masih tutup. Silakan datang lagi di jam {jamBuka}</p>
-      </footer>
-    );
+    return <FooterCloseHour jamBuka={jamBuka} jamTutup={jamTutup} />;
   }
 }
 
+function FooterOpenHour(props) {
+  return (
+    <footer className="footer">
+      <div className="order">
+        <p>
+          {new Date().getFullYear()} Warung Padang | Jam Buka {props.jamBuka} -
+          Jam Tutup {props.jamTutup}
+        </p>
+        <button className="btn">Order</button>
+      </div>
+    </footer>
+  );
+}
+
+function FooterCloseHour(props) {
+  return (
+    <footer className="footer">
+      <p>Maaf, masih tutup. Silakan datang lagi di jam {props.jamBuka}</p>
+    </footer>
+  );
+}
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
