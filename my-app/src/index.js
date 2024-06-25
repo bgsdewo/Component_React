@@ -31,20 +31,38 @@ function Menu() {
   return (
     <main className="menu">
       <h2 style={style}>Menu kita</h2>
-      <Food />
-      <Food />
+      <Food
+        nama="Nasi Goreng"
+        deskripsi="Nasi goreng merupkan khas indonesia"
+        harga={25000}
+        foto="food/nasi-goreng.jpg"
+        stok={Math.random() >= 0.5 ? true : false}
+      />
+      <Food
+        nama="Sate Ayam"
+        deskripsi="Potongan daging ayam yang ditusuk dan dibakar, disajikan dengan bumbu kacang"
+        harga={15000}
+        foto="food/sate-ayam.jpg"
+        stok={Math.random() >= 0.5 ? true : false}
+      />
       <Food />
     </main>
-
-    //ini gabisa
-    // <div>
-    //   <h2>Menu kita</h2>
-    //   <Food />
-    //   <Food />
-    //   <Food />
-    // </div>
   );
 }
+
+function Food(props) {
+  return (
+    <div className="food">
+      <img src={props.foto} alt={props.nama} width={100} height={70} />
+      <div>
+        <h3>{props.nama}</h3>
+        <p>{props.deskripsi}</p>
+        <span>{props.harga}</span>
+      </div>
+    </div>
+  );
+}
+
 function Footer() {
   const hour = new Date().getHours();
   const jamBuka = 10;
@@ -62,15 +80,7 @@ function Footer() {
     </footer>
   );
 }
-function Food() {
-  return (
-    <div>
-      <img src="food/bakso.jpg" alt="" width={100} height={70} />
-      <h2>Bakso Betawi</h2>
-      <p>Bakso Betawi khas mama lala</p>
-    </div>
-  );
-}
+
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
