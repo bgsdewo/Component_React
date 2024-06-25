@@ -33,12 +33,21 @@ function Menu() {
   return (
     <main className="menu">
       <h2 style={style}>Menu kita</h2>
+
       {numFoods > 0 ? (
-        <ul className="foods">
-          {data.map((food) => (
-            <Food foodObj={food} key={food.nama} />
-          ))}
-        </ul>
+        //react fragment
+        <>
+          <p>
+            Aneka makanan ikan bakarAneka makanan ikan bakarAneka makanan ikan
+            bakarAneka makanan ikan bakarAneka makanan ikan bakarAneka makanan
+            ikan bakar
+          </p>
+          <ul className="foods">
+            {data.map((food) => (
+              <Food foodObj={food} key={food.nama} />
+            ))}
+          </ul>
+        </>
       ) : (
         <p>Kosong datanya</p>
       )}
@@ -47,7 +56,7 @@ function Menu() {
 }
 
 function Food(props) {
-  const { nama, deskripsi, harga, foto, stok } = props.foodObj;
+  const { nama, deskripsi, harga, foto } = props.foodObj;
   return (
     <li className="food">
       <img src={foto} alt={nama} width={100} height={70} />
